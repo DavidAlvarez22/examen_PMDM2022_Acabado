@@ -24,5 +24,15 @@ export class HomePage {
     this.leer.guardar();
   }
 
+  public comprobar (numero : number){
+    if(numero >0){
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
+
 
 }

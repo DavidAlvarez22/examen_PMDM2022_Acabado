@@ -7,13 +7,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list *ngFor = "let datos of leer.getPreguntas()">
+  <ion-list *ngFor ="let datos of leer.getPreguntas()">
     <ion-item>
        <ion-label>
          {{datos.pregunta}}
        </ion-label> 
-       <ion-label>{{datos.contestada}}</ion-label>
-       <ion-button (click)= "onClick(datos)">Responder</ion-button>
+       <ion-label>
+        <ion-badge *ngIf="datos.contestada >=1"  color="success">¡¡¡Respuesta Acertada !!!</ion-badge>
+        <ion-badge *ngIf="datos.contestada < 0"  color="danger"> {{datos.contestada}}</ion-badge>
+        <ion-badge *ngIf="datos.contestada == 0"  >0</ion-badge>
+       
+      </ion-label>
+       
+     
+       
+       <ion-button [disabled]="comprobar(datos.contestada)" (click)= "onClick(datos)">Responder</ion-button>
        
     </ion-item>
 
